@@ -19,7 +19,7 @@ module.exports = {
   },
   entry:  entries,
   output: {
-    path: setPath('demo'),
+    path: setPath('docs'),
     filename({ chunk }) {
       const { name } = chunk;
       if (name === 'demo') {
@@ -56,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin([
-      'demo/**/*.js',
+      'docs/**/*.js',
     ]),
   ],
 };
