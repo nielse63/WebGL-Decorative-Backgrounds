@@ -2,10 +2,11 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const setPath = dir => path.resolve(__dirname, dir);
-const entries = {};
-[1, 2, 3, 4, 5, 6].forEach((num) => {
-  const name = `demo${num}`;
-  entries[name] = `./src/${name}.js`;
+const entries = {
+  demo: './src/demo/demo.js',
+};
+['brain', 'cubes', 'network', 'quantum', 'sphere', 'waves'].forEach((name) => {
+  entries[name] = `./src/demo/${name}.js`;
 });
 
 module.exports = {
@@ -16,12 +17,16 @@ module.exports = {
       '@': setPath('src'),
     },
   },
-  entry:  'demo/demo.js',
-  // entry:  entries,
+  entry:  entries,
   output: {
-    path:     setPath('demo'),
-    filename: '[name]/demo.bundle.js',
-    // filename: '[name]/demo.js',
+    path: setPath('demo'),
+    filename({ chunk }) {
+      const { name } = chunk;
+      if (name === 'demo') {
+        return 'demo.bundle.js';
+      }
+      return '[name]/bundle.js';
+    },
   },
   module: {
     rules: [

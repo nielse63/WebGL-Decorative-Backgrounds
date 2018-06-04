@@ -61,4 +61,4 @@ typings/
 .next
 
 # demo scripts
-# demo/**/*.js
+demo/**/*.js
