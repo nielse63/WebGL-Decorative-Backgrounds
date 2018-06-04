@@ -1,4 +1,5 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const setPath = dir => path.resolve(__dirname, dir);
 
@@ -12,7 +13,7 @@ module.exports = {
   },
   output: {
     path:     setPath('demo'),
-    filename: '[name]/[name].js',
+    filename: '[name]/demo.js',
   },
   module: {
     rules: [
@@ -29,7 +30,7 @@ module.exports = {
           {
             loader:  'file-loader',
             options: {
-              name:            '[name].[ext]',
+              name:            'images/[name].[ext]',
               useRelativePath: false,
             },
           },
@@ -38,4 +39,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin([
+      'demo/**/*.js',
+    ]),
+  ],
 };

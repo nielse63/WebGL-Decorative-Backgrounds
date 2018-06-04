@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint src/ *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix",
-    "prebuild": "rm -f demo/demo.js; yarn run lint",
+    "prebuild": "yarn run lint",
     "build": "webpack --mode=production",
     "test": "echo 'no tests created yet!'",
     "release": "release-it"
@@ -16,6 +16,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-webpack": "^0.10.0",

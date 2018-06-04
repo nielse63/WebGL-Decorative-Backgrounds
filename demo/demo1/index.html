@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebGL Background Demo #1</title>
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="100%" height="100%"></canvas>
+  <script type="x-shader/x-vertex" id="wrapVertexShader">
+    attribute float size;
+    attribute vec3 color;
+    varying vec3 vColor;
+    void main() {
+      vColor = color;
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      gl_PointSize = size * ( 350.0 / - mvPosition.z );
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="wrapFragmentShader">
+    varying vec3 vColor;
+    uniform sampler2D texture;
+    void main(){
+      vec4 textureColor = texture2D( texture, gl_PointCoord );
+      if ( textureColor.a < 0.3 ) discard;
+      vec4 color = vec4(vColor.xyz, 1.0) * textureColor;
+      gl_FragColor = color;
+    }
+  </script>
+  <script src="demo.js"></script>
+</body>
+</html>

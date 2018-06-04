@@ -8,7 +8,7 @@ import {
 import TweenMax from 'gsap/TweenMax';
 import { getCanvas, getCanvasSize } from './utils';
 
-const dotTextureImage = require('../demo/images/dot-texture.png');
+const dotTextureImage = require('./images/dot-texture.png');
 
 function network() {
   const canvas = getCanvas();
