@@ -16,7 +16,8 @@ jobs:
         skip-cleanup: true
         github-token: $GITHUB_TOKEN
         keep-history: true
-        target-branch: master
+        local-dir: docs
+        # target-branch: master
         on:
           branch: master
 
