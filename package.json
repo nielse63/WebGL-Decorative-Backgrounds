@@ -11,7 +11,7 @@
     "build": "webpack --mode=production",
     "test": "echo 'no tests created yet!'",
     "release": "release-it",
-    "serve": "http-server demo/"
+    "serve": "http-server docs/"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
