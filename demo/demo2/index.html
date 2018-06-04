@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>WebGL Background Demo #1</title>
+  <title>WebGL Background Demo #2</title>
 
   <style>
     body,
@@ -25,24 +25,22 @@
 </head>
 <body>
   <canvas width="100%" height="100%" id="scene"></canvas>
-  <script type="x-shader/x-vertex" id="wrapVertexShaderNetwork">
+  <script type="x-shader/x-vertex" id="wrapVertexShaderWaves">
+    #define PI 3.1415926535897932384626433832795
     attribute float size;
-    attribute vec3 color;
-    varying vec3 vColor;
     void main() {
-      vColor = color;
       vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-      gl_PointSize = size * ( 350.0 / - mvPosition.z );
+      gl_PointSize = 3.0;
       gl_Position = projectionMatrix * mvPosition;
     }
   </script>
-  <script type="x-shader/x-fragment" id="wrapFragmentShaderNetwork">
-    varying vec3 vColor;
+  <script type="x-shader/x-fragment" id="wrapFragmentShaderWaves">
     uniform sampler2D texture;
     void main(){
       vec4 textureColor = texture2D( texture, gl_PointCoord );
       if ( textureColor.a < 0.3 ) discard;
-      vec4 color = vec4(vColor.xyz, 1.0) * textureColor;
+      vec4 dotColor = vec4(0.06, 0.18, 0.36, 0.4);
+      vec4 color = dotColor * textureColor;
       gl_FragColor = color;
     }
   </script>

@@ -1,1 +1,2 @@
-demo/
+demo/**/*.js
+# !demo/demo.js

@@ -2,6 +2,7 @@
 
 module.exports = {
   root:          true,
+  parser:        'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
     sourceType:  'module',
@@ -15,7 +16,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: './webpack.base.conf.js',
+        config: './webpack.config.js',
       },
     },
   },
@@ -24,19 +25,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['test/**'],
+      files: ['src/backgrounds/*.js'],
       rules: {
-        'no-console': 'off',
-      },
-    },
-    {
-      files: ['demo/**'],
-      env:   {
-        browser: true,
-      },
-      rules: {
-        'no-console':      'off',
-        'no-multi-assign': 'off',
+        'no-param-reassign': 'off',
       },
     },
   ],

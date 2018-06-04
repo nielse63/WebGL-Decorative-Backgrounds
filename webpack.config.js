@@ -2,18 +2,26 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const setPath = dir => path.resolve(__dirname, dir);
+const entries = {};
+[1, 2, 3, 4, 5, 6].forEach((num) => {
+  const name = `demo${num}`;
+  entries[name] = `./src/${name}.js`;
+});
 
 module.exports = {
-  mode:    'production',
+  mode:    'development',
   resolve: {
     extensions: ['.js', '.json'],
+    alias:      {
+      '@': setPath('src'),
+    },
   },
-  entry: {
-    demo1: './src/demo1.js',
-  },
+  entry:  'demo/demo.js',
+  // entry:  entries,
   output: {
     path:     setPath('demo'),
-    filename: '[name]/demo.js',
+    filename: '[name]/demo.bundle.js',
+    // filename: '[name]/demo.js',
   },
   module: {
     rules: [
@@ -30,7 +38,9 @@ module.exports = {
           {
             loader:  'file-loader',
             options: {
-              name:            'images/[name].[ext]',
+              name:            '[name].[ext]',
+              outputPath:      'images/',
+              publicPath:      '../images/',
               useRelativePath: false,
             },
           },

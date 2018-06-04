@@ -10,10 +10,12 @@
     "prebuild": "yarn run lint",
     "build": "webpack --mode=production",
     "test": "echo 'no tests created yet!'",
-    "release": "release-it"
+    "release": "release-it",
+    "serve": "http-server demo/"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",

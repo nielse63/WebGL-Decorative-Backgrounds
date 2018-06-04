@@ -6,20 +6,16 @@ import {
   Points, LineBasicMaterial, LineSegments,
 } from 'three';
 import TweenMax from 'gsap/TweenMax';
-import { getCanvas, getCanvasSize } from './utils';
+import { getCanvasSize, onresize } from '@/utils';
+import dotTextureImage from '@/images/dot-texture.png';
 
-const dotTextureImage = require('./images/dot-texture.png');
-
-function network() {
-  const canvas = getCanvas();
-  let { width, height } = getCanvasSize();
-
+export default (canvas) => {
+  const { width, height } = getCanvasSize(canvas);
   const colors = [
     new Color(0xac1122),
     new Color(0x96789f),
     new Color(0x535353),
   ];
-
   const renderer = new WebGLRenderer({
     canvas,
     antialias: true,
@@ -48,30 +44,32 @@ function network() {
   const positions = new Float32Array(dotsAmount * 3);
   const sizes = new Float32Array(dotsAmount);
   const colorsAttribute = new Float32Array(dotsAmount * 3);
-  let dotsIndex = 0;
-  while (dotsIndex < dotsAmount) {
-    const vector = new Vector3();
+  {
+    let i = 0;
+    while (i < dotsAmount) {
+      const vector = new Vector3();
 
-    vector.color = Math.floor(Math.random() * colors.length);
-    vector.theta = Math.random() * Math.PI * 2;
-    vector.phi = (
-      (1 - Math.sqrt(Math.random())) * Math.PI
-    ) / (2 * (Math.random() > 0.5 ? 1 : -1));
+      vector.color = Math.floor(Math.random() * colors.length);
+      vector.theta = Math.random() * Math.PI * 2;
+      vector.phi = (
+        (1 - Math.sqrt(Math.random())) * Math.PI
+      ) / (2 * (Math.random() > 0.5 ? 1 : -1));
 
-    vector.x = Math.cos(vector.theta) * Math.cos(vector.phi);
-    vector.y = Math.sin(vector.phi);
-    vector.z = Math.sin(vector.theta) * Math.cos(vector.phi);
-    vector.multiplyScalar(120 + ((Math.random() - 0.5) * 5));
-    vector.scaleX = 5;
+      vector.x = Math.cos(vector.theta) * Math.cos(vector.phi);
+      vector.y = Math.sin(vector.phi);
+      vector.z = Math.sin(vector.theta) * Math.cos(vector.phi);
+      vector.multiplyScalar(120 + ((Math.random() - 0.5) * 5));
+      vector.scaleX = 5;
 
-    if (Math.random() > 0.5) {
-      moveDot(vector, dotsIndex); // eslint-disable-line no-use-before-define
+      if (Math.random() > 0.5) {
+        moveDot(vector, i); // eslint-disable-line no-use-before-define
+      }
+      dotsGeometry.vertices.push(vector);
+      vector.toArray(positions, i * 3);
+      colors[vector.color].toArray(colorsAttribute, i * 3);
+      sizes[i] = 5;
+      i += 1;
     }
-    dotsGeometry.vertices.push(vector);
-    vector.toArray(positions, dotsIndex * 3);
-    colors[vector.color].toArray(colorsAttribute, dotsIndex * 3);
-    sizes[dotsIndex] = 5;
-    dotsIndex += 1;
   }
 
   const bufferWrapGeom = new BufferGeometry();
@@ -87,8 +85,8 @@ function network() {
         value: dotTexture,
       },
     },
-    vertexShader:   document.getElementById('wrapVertexShader').textContent,
-    fragmentShader: document.getElementById('wrapFragmentShader').textContent,
+    vertexShader:   document.getElementById('wrapVertexShaderNetwork').textContent,
+    fragmentShader: document.getElementById('wrapFragmentShaderNetwork').textContent,
     transparent:    true,
   });
   const wrap = new Points(bufferWrapGeom, shaderMaterial);
@@ -102,16 +100,27 @@ function network() {
     opacity:     0.3,
   });
 
-  dotsGeometry.vertices.forEach((vector1, i) => {
-    dotsGeometry.vertices.forEach((vector2, j) => {
-      if (i !== j && vector1.distanceTo(vector2) < 12) {
-        segmentsGeom.vertices.push(vector1);
-        segmentsGeom.vertices.push(vector2);
-        segmentsGeom.colors.push(colors[vector1.color]);
-        segmentsGeom.colors.push(colors[vector1.color]);
+  {
+    let i = 0;
+    const { vertices } = dotsGeometry;
+    const { length } = vertices;
+    while (i < length) {
+      const v1 = vertices[i];
+      const color = colors[v1.color];
+      let j = 0;
+      while (j < length) {
+        const v2 = vertices[j];
+        if (i !== j && v1.distanceTo(v2) < 12) {
+          segmentsGeom.vertices.push(v1);
+          segmentsGeom.vertices.push(v2);
+          segmentsGeom.colors.push(color);
+          segmentsGeom.colors.push(color);
+        }
+        j += 1;
       }
-    });
-  });
+      i += 1;
+    }
+  }
 
   const segments = new LineSegments(segmentsGeom, segmentsMat);
   galaxy.add(segments);
@@ -144,20 +153,7 @@ function network() {
     });
   }
 
-
-  function onresize() {
-    canvas.style.width = '';
-    canvas.style.height = '';
-    width = canvas.offsetWidth;
-    height = canvas.offsetHeight;
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
-  }
-
   // let resizeTm;
-  window.addEventListener('resize', onresize, false);
-  requestAnimationFrame(render);
-}
-
-export default network;
+  window.addEventListener('resize', onresize.bind(null, canvas, camera, renderer), false);
+  render();
+};
