@@ -81,10 +81,22 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/demo3.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./demo/src/quantum.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./demo/src/quantum.js":
+/*!*****************************!*\
+  !*** ./demo/src/quantum.js ***!
+  \*****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _backgrounds_quantum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/backgrounds/quantum */ \"./src/backgrounds/quantum.js\");\n\n\n\nvar canvas = document.querySelector('#scene');\nObject(_backgrounds_quantum__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(canvas);\n\n//# sourceURL=webpack:///./demo/src/quantum.js?");
+
+/***/ }),
 
 /***/ "./node_modules/three/build/three.module.js":
 /*!**************************************************!*\
@@ -107,18 +119,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/utils */ \"./src/utils.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (canvas) {\n  var _getCanvasSize = Object(_utils__WEBPACK_IMPORTED_MODULE_1__[\"getCanvasSize\"])(canvas),\n      width = _getCanvasSize.width,\n      height = _getCanvasSize.height;\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]({\n    canvas: canvas,\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);\n  renderer.setSize(width, height);\n  renderer.setClearColor(0x191919);\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"](40, width / height, 0.1, 1000);\n  camera.position.set(0, 0, 280);\n\n  var sphere = new three__WEBPACK_IMPORTED_MODULE_0__[\"Group\"]();\n  scene.add(sphere);\n  var mat1 = new three__WEBPACK_IMPORTED_MODULE_0__[\"LineBasicMaterial\"]({\n    color: 0x4a4a4a\n  });\n  var mat2 = new three__WEBPACK_IMPORTED_MODULE_0__[\"LineBasicMaterial\"]({\n    color: 0x3F51B5\n  });\n\n  var radius = 100;\n  var lines = 50;\n  var dots = 50;\n\n  {\n    var i = 0;\n    while (i < lines) {\n      var geometry = new three__WEBPACK_IMPORTED_MODULE_0__[\"Geometry\"]();\n      var line = new three__WEBPACK_IMPORTED_MODULE_0__[\"Line\"](geometry, Math.random() > 0.2 ? mat1 : mat2);\n      line.speed = Math.random() * 300 + 250;\n      line.wave = Math.random();\n      line.radius = Math.floor(radius + (Math.random() - 0.5) * (radius * 0.2));\n      var j = 0;\n      while (j < dots) {\n        var x = j / dots * line.radius * 2 - line.radius;\n        var vector = new three__WEBPACK_IMPORTED_MODULE_0__[\"Vector3\"](x, 0, 0);\n        geometry.vertices.push(vector);\n        j += 1;\n      }\n      line.rotation.x = Math.random() * Math.PI;\n      line.rotation.y = Math.random() * Math.PI;\n      line.rotation.z = Math.random() * Math.PI;\n      sphere.add(line);\n      i += 1;\n    }\n  }\n\n  function updateDots(a) {\n    var children = sphere.children;\n\n\n    var i = 0;\n    while (i < lines) {\n      var _line = children[i];\n      var vertices = _line.geometry.vertices;\n\n      var _j = 0;\n      while (_j < dots) {\n        var _vector = vertices[_j];\n        var ratio = 1 - (_line.radius - Math.abs(_vector.x)) / _line.radius;\n        var y = Math.sin(a / _line.speed + _j * 0.15) * 12 * ratio;\n        _vector.y = y;\n        _j += 1;\n      }\n      _line.geometry.verticesNeedUpdate = true;\n      i += 1;\n    }\n  }\n\n  function render() {\n    var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;\n\n    requestAnimationFrame(render);\n    updateDots(a);\n    sphere.rotation.y = a * 0.0001;\n    sphere.rotation.x = -a * 0.0001;\n    renderer.render(scene, camera);\n  }\n\n  window.addEventListener('resize', _utils__WEBPACK_IMPORTED_MODULE_1__[\"onresize\"].bind(null, canvas, camera, renderer), false);\n  render();\n});\n\n//# sourceURL=webpack:///./src/backgrounds/quantum.js?");
-
-/***/ }),
-
-/***/ "./src/demo3.js":
-/*!**********************!*\
-  !*** ./src/demo3.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _backgrounds_quantum__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/backgrounds/quantum */ \"./src/backgrounds/quantum.js\");\n\n\n\nvar canvas = document.querySelector('#scene');\nObject(_backgrounds_quantum__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(canvas);\n\n//# sourceURL=webpack:///./src/demo3.js?");
 
 /***/ }),
 

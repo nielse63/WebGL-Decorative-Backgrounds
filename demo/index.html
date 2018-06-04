@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>WebGL Backgrounds Demo</title>
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
   <canvas id="scene"></canvas>
@@ -56,5 +73,6 @@
   <a href="demo4/">Sphere</a>
   <a href="demo5/">Cubes</a>
   <a href="demo6/">Brain</a> -->
+  <script src="dist/demo.js"></script>
 </body>
 </html>

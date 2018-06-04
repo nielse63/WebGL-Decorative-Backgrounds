@@ -81,10 +81,22 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/demo4.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./demo/src/sphere.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./demo/src/sphere.js":
+/*!****************************!*\
+  !*** ./demo/src/sphere.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _backgrounds_sphere__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/backgrounds/sphere */ \"./src/backgrounds/sphere.js\");\n\n\n\nvar canvas = document.querySelector('#scene');\nObject(_backgrounds_sphere__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(canvas);\n\n//# sourceURL=webpack:///./demo/src/sphere.js?");
+
+/***/ }),
 
 /***/ "./node_modules/three/build/three.module.js":
 /*!**************************************************!*\
@@ -107,18 +119,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var _noise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/noise */ \"./src/noise.js\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/utils */ \"./src/utils.js\");\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (canvas) {\n  var _getCanvasSize = Object(_utils__WEBPACK_IMPORTED_MODULE_2__[\"getCanvasSize\"])(canvas),\n      width = _getCanvasSize.width,\n      height = _getCanvasSize.height;\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]({\n    canvas: canvas,\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);\n  renderer.setSize(width, height);\n  renderer.setClearColor(0x000000, 0);\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"](40, width / height, 0.1, 1000);\n  camera.position.set(0, 0, 350);\n\n  var sphere = new three__WEBPACK_IMPORTED_MODULE_0__[\"Group\"]();\n  scene.add(sphere);\n\n  var material = new three__WEBPACK_IMPORTED_MODULE_0__[\"LineBasicMaterial\"]({\n    color: 0xfe0e55\n  });\n  var linesAmount = 18;\n  var radius = 100;\n  var verticesAmount = 50;\n\n  var linesIndex = 0;\n  while (linesIndex < linesAmount) {\n    var geometry = new three__WEBPACK_IMPORTED_MODULE_0__[\"Geometry\"]();\n    geometry.y = linesIndex / linesAmount * radius * 2;\n    var i = 0;\n    while (i < verticesAmount) {\n      var vector = new three__WEBPACK_IMPORTED_MODULE_0__[\"Vector3\"]();\n      var percentage = i / verticesAmount;\n      vector.x = Math.cos(percentage * Math.PI * 2);\n      vector.z = Math.sin(percentage * Math.PI * 2);\n      vector.clone = vector.clone();\n      geometry.vertices.push(vector);\n      i += 1;\n    }\n    var line = new three__WEBPACK_IMPORTED_MODULE_0__[\"Line\"](geometry, material);\n    sphere.add(line);\n    linesIndex += 1;\n  }\n\n  function updateVertices(a) {\n    sphere.children.forEach(function (line) {\n      line.geometry.y += 0.3;\n      if (line.geometry.y > radius * 2) {\n        line.geometry.y = 0;\n      }\n      var radiusHeight = Math.sqrt(line.geometry.y * (2 * radius - line.geometry.y));\n      line.geometry.vertices.forEach(function (vector) {\n        var ratio = Object(_noise__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(vector.x * 0.009, vector.z * 0.009 + a * 0.0006, line.geometry.y * 0.009) * 15;\n        vector.copy(vector.clone);\n        vector.multiplyScalar(radiusHeight + ratio);\n        vector.y = line.geometry.y - radius;\n      });\n      line.geometry.verticesNeedUpdate = true;\n    });\n  }\n\n  function render() {\n    var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;\n\n    requestAnimationFrame(render);\n    updateVertices(a);\n    renderer.render(scene, camera);\n  }\n\n  window.addEventListener('resize', _utils__WEBPACK_IMPORTED_MODULE_2__[\"onresize\"].bind(null, canvas, camera, renderer), false);\n  render();\n});\n\n//# sourceURL=webpack:///./src/backgrounds/sphere.js?");
-
-/***/ }),
-
-/***/ "./src/demo4.js":
-/*!**********************!*\
-  !*** ./src/demo4.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _backgrounds_sphere__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/backgrounds/sphere */ \"./src/backgrounds/sphere.js\");\n\n\n\nvar canvas = document.querySelector('#scene');\nObject(_backgrounds_sphere__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(canvas);\n\n//# sourceURL=webpack:///./src/demo4.js?");
 
 /***/ }),
 
