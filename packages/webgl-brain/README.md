@@ -1,7 +1,13 @@
 
 # @nielse63/webgl-brain
+> A sample WebGL decorative background using Three.js
 
-> Part of the WebGL Decorative Backgrounds sample
+[![npm](https://img.shields.io/npm/v/@nielse63/webgl-brain.svg?maxAge=2592000)
+[![Dependency Status](https://david-dm.org/nielse63/WebGL-Decorative-Backgrounds.svg?path=packages/webgl-brain)](https://david-dm.org/nielse63/WebGL-Decorative-Backgrounds?path=packages/webgl-brain)
+
+Given a `<canvas>` NodeElement as the only parameter, the function will render an animation using Three.js
+
+* [Example](https://nielse63.github.io/WebGL-Decorative-Backgrounds/brain.html)
 
 ## Installation
 
@@ -18,10 +24,8 @@ npm install --save @nielse63/webgl-brain
 ## Usage
 
 ```js
-import webgl-brain from '@nielse63/webgl-brain';
+import brain from '@nielse63/webgl-brain';
 
-const value = 'something';
-const output = webgl-brain(value);
-// do something...
+const canvas = document.querySelector('canvas');
+brain(canvas);
 ```
-    

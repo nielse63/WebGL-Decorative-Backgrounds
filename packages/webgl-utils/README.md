@@ -1,7 +1,8 @@
 
 # @nielse63/webgl-utils
+> A utility module for the WebGL Decorative Backgrounds examples
 
-> Part of the WebGL Decorative Backgrounds sample
+[![npm](https://img.shields.io/npm/v/@nielse63/webgl-utils.svg?maxAge=2592000)](https://www.npmjs.com/package/@nielse63/webgl-utils)
 
 ## Installation
 
@@ -18,10 +19,18 @@ npm install --save @nielse63/webgl-utils
 ## Usage
 
 ```js
-import webgl-utils from '@nielse63/webgl-utils';
+import * as utils from '@nielse63/webgl-utils';
 
-const value = 'something';
-const output = webgl-utils(value);
-// do something...
+/**
+ * API:
+ *   getCanvasSize(<canvas>)
+ *   onresize(<canvas>, PerspectiveCamera, WebGLRenderer)
+ *   dotTextureImage: String
+ *   createRenderer(<canvas>, Color)
+ *   createShaderMaterial(String, String, TextureLoader)
+ */
 ```
-    
+
+## API
+
+*TODO*: Add actual API documentation

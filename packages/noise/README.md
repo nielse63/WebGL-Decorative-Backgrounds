@@ -1,7 +1,6 @@
 
 # @nielse63/noise
-
-> Part of the WebGL Decorative Backgrounds sample
+> A simplex 3d noise algorithm
 
 ## Installation
 
@@ -20,7 +19,6 @@ npm install --save @nielse63/noise
 ```js
 import noise from '@nielse63/noise';
 
-const value = 'something';
-const output = noise(value);
-// do something...
+const ratio = noise(x, y, z);
+// do something with the ratio...
 ```
