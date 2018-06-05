@@ -28,6 +28,8 @@ publish:
 	make build
 	$(lerna) publish --force-publish=* --exact --skip-temp-tag
 	yarn upgrade --scope @nielse63 --latest
+	git add package.json yarn.lock
+	git commit -m 'Makefile: Updated scoped packages'
 	$(release-it)
 
 screenshots:
