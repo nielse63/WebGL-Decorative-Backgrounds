@@ -7,6 +7,10 @@ cache:
   yarn: true
 dist: trusty
 
+install:
+  - yarn
+  - node_modules/.bin/lerna bootstrap
+
 jobs:
   include:
     - stage: build
