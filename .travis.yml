@@ -7,8 +7,6 @@ cache:
   yarn: true
 dist: trusty
 
-install: make bootstrap
-
 jobs:
   include:
     - stage: build

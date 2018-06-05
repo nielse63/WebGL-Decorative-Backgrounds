@@ -12,7 +12,7 @@
     "watch": "NODE_ENV=development webpack --watch",
     "build": "make build",
     "test": "echo 'no tests created yet!'",
-    "serve": "pm2 serve dist 8080",
+    "serve": "make serve",
     "unserve": "pm2 kill"
   },
   "dependencies": {
@@ -28,7 +28,6 @@
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
-    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -49,6 +48,16 @@
     "webpack-command": "^0.2.0",
     "yorkie": "^1.0.3"
   },
+  "optionalDependencies": {
+    "imagemin-cli": "^3.0.0",
+    "pm2": "^2.10.4",
+    "puppeteer": "^1.4.0"
+  },
+  "browserslist": [
+    "> 5%",
+    "last 2 major versions",
+    "not ie <= 9"
+  ],
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -57,9 +66,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "optionalDependencies": {
-    "pm2": "^2.10.4",
-    "puppeteer": "^1.4.0"
   }
 }

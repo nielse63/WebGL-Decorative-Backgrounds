@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 
 const env = process.env.NODE_ENV || 'development';
@@ -9,13 +8,6 @@ const isDev = env === 'development';
 const mode = isDev ? env : 'production';
 const setPath = dir => path.resolve(__dirname, dir);
 const packageName = pkg.name.replace(/-/g, ' ');
-// const backgrounds = [
-//   'webgl-brain',
-//   'webgl-cubes',
-//   'webgl-network',
-//   'webgl-sphere',
-//   'webgl-waves',
-// ].map((dep) => {
 const backgrounds = Object.keys(pkg.dependencies).map((dep) => {
   const slug = dep.replace(/@nielse63\//, '');
   const lowercase = slug.replace(/webgl-/, '');
@@ -91,13 +83,6 @@ const config = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from:   setPath('src/images'),
-        to:     setPath('dist/images'),
-        ignore: ['.*'],
-      },
-    ]),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
     }),

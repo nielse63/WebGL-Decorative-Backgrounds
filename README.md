@@ -3,6 +3,7 @@
 > Sample decorative backgrounds using WebGL
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability)
+[![Build Status](https://travis-ci.org/nielse63/WebGL-Decorative-Backgrounds.svg?branch=master)](https://travis-ci.org/nielse63/WebGL-Decorative-Backgrounds)
 
 ## Demos
 

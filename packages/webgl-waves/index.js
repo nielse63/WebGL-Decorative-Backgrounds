@@ -73,16 +73,6 @@ export default (canvas) => {
     'wrapFragmentShaderWaves',
     dotTexture,
   );
-  // const shaderMaterial = new ShaderMaterial({
-  //   uniforms: {
-  //     texture: {
-  //       value: dotTexture,
-  //     },
-  //   },
-  //   vertexShader:   document.getElementById('wrapVertexShaderWaves').textContent,
-  //   fragmentShader: document.getElementById('wrapFragmentShaderWaves').textContent,
-  //   transparent:    true,
-  // });
   const dots = new Points(bufferDotsGeom, shaderMaterial);
   scene.add(dots);
 

@@ -12,17 +12,19 @@ const createPrerender = (url) => {
   document.head.appendChild(link);
 };
 
-const links = document.querySelectorAll('a');
-const urlHost = window.location.host;
-[...links].forEach((link) => {
-  link.addEventListener('mouseover', (e) => {
-    const { path } = e;
-    const firstItem = path[0];
-    const target = firstItem.nodeName.toLowerCase() === 'a' ? firstItem : path.filter(({ nodeName }) => nodeName && nodeName.toLowerCase() === 'a')[0];
-    const { href, host } = target;
-    if (host !== urlHost || prerenderExists(href)) {
-      return;
-    }
-    createPrerender(href);
-  }, false);
-});
+window.addEventListener('load', () => {
+  const links = document.querySelectorAll('a');
+  const urlHost = window.location.host;
+  [...links].forEach((link) => {
+    link.addEventListener('mouseover', (e) => {
+      const { path } = e;
+      const firstItem = path[0];
+      const target = firstItem.nodeName.toLowerCase() === 'a' ? firstItem : path.filter(({ nodeName }) => nodeName && nodeName.toLowerCase() === 'a')[0];
+      const { href, host } = target;
+      if (host !== urlHost || prerenderExists(href)) {
+        return;
+      }
+      createPrerender(href);
+    }, false);
+  });
+}, false);

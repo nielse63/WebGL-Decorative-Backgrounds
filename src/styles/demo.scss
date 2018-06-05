@@ -14,8 +14,7 @@ html {
 
 canvas {
   width: 100vw;
-  // height: calc(100vh - 65px);
-  height: 100vh;
+  height: calc(100vh - 65px);
   display: block;
   margin: 0;
 }
@@ -97,9 +96,6 @@ footer {
 }
 
 .grid {
-  // display: grid;
-  // grid-template-rows: repeat(3, 300px);
-  // grid-template-columns: 50% 50%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
