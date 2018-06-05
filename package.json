@@ -9,10 +9,8 @@
     "lint": "eslint src/ packages/ *.js --fix --cache",
     "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
     "watch": "NODE_ENV=development webpack --watch",
-    "prebuild": "rm -rf dist; yarn run lint",
-    "build": "NODE_ENV=production webpack --mode=production",
+    "build": "make build",
     "test": "echo 'no tests created yet!'",
-    "release": "release-it",
     "serve": "http-server dist/"
   },
   "dependencies": {
