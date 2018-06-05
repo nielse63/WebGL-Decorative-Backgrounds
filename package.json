@@ -15,7 +15,13 @@
     "release": "release-it",
     "serve": "http-server dist/"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@nielse63/webgl-brain": "^1.0.3",
+    "@nielse63/webgl-cubes": "^1.0.3",
+    "@nielse63/webgl-network": "^1.0.3",
+    "@nielse63/webgl-sphere": "^1.0.3",
+    "@nielse63/webgl-waves": "^1.0.3"
+  },
   "devDependencies": {
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",

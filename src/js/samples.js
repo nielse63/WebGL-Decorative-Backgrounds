@@ -1,9 +1,9 @@
 
-import brain from '$packages/webgl-brain';
-import cubes from '$packages/webgl-cubes';
-import network from '$packages/webgl-network';
-import sphere from '$packages/webgl-sphere';
-import waves from '$packages/webgl-waves';
+import brain from '@nielse63/webgl-brain';
+import cubes from '@nielse63/webgl-cubes';
+import network from '@nielse63/webgl-network';
+import sphere from '@nielse63/webgl-sphere';
+import waves from '@nielse63/webgl-waves';
 
 const backgrounds = {
   brain,
@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
     .replace(/\//g, '')
     .replace(/\.html/, '')
     .trim();
+  console.log({ backgrounds, key }); // eslint-disable-line
   const fn = backgrounds[key];
   const canvas = document.querySelector('#scene');
   fn(canvas);
