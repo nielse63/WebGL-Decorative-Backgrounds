@@ -3,5 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Erik Nielsen <erik@312development.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

@@ -6,9 +6,10 @@
   "author": "Erik Nielsen <erik@312development.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/ *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix",
+    "lint": "eslint packages/ *.js --fix --cache",
+    "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
     "prebuild": "yarn run lint",
-    "build": "webpack --mode=production",
+    "build": "webpack",
     "test": "echo 'no tests created yet!'",
     "release": "release-it",
     "serve": "http-server docs/"

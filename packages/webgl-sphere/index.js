@@ -2,8 +2,8 @@ import {
   WebGLRenderer, Scene, PerspectiveCamera, Group,
   LineBasicMaterial, Geometry, Vector3, Line,
 } from 'three';
-import noise from '@/noise';
-import { getCanvasSize, onresize } from '@/utils';
+import noise from '@nielse63/noise';
+import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);

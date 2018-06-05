@@ -1,13 +1,20 @@
+const fs = require('fs');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const setPath = dir => path.resolve(__dirname, dir);
-const entries = {
-  demo: './src/demo/demo.js',
-};
-['brain', 'cubes', 'network', 'quantum', 'sphere', 'waves'].forEach((name) => {
-  entries[name] = `./src/demo/${name}.js`;
-});
+
+const packagesDir = setPath('packages');
+
+// create entries
+const entries = {};
+fs.readdirSync(packagesDir)
+  .filter(dir => /^webgl/.test(dir) && !/-utils$/.test(dir))
+  .map(dir => dir.replace(/webgl-/, ''))
+  .forEach((name) => {
+    entries[name] = `./packages/webgl-${name}/index.js`;
+  });
+
 
 module.exports = {
   mode:    'development',
@@ -19,14 +26,8 @@ module.exports = {
   },
   entry:  entries,
   output: {
-    path: setPath('docs'),
-    filename({ chunk }) {
-      const { name } = chunk;
-      if (name === 'demo') {
-        return 'js/demo.js';
-      }
-      return '[name]/bundle.js';
-    },
+    path:     setPath('dist'),
+    filename: 'js/[name].js',
   },
   module: {
     rules: [
@@ -45,7 +46,7 @@ module.exports = {
             options: {
               name:            '[name].[ext]',
               outputPath:      'images/',
-              publicPath:      '../images/',
+              // publicPath:      '../images/',
               useRelativePath: false,
             },
           },
@@ -56,7 +57,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin([
-      'docs/**/*.js',
+      'dist/',
     ]),
   ],
 };

@@ -16,7 +16,6 @@ class Grad {
   }
 }
 
-
 export default (xin, yin, zin) => {
   const grad3 = [
     new Grad(1, 1, 0), new Grad(-1, 1, 0), new Grad(1, -1, 0), new Grad(-1, -1, 0),
