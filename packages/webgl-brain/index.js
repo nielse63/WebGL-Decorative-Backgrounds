@@ -1,19 +1,13 @@
 import {
-  Group, WebGLRenderer, Scene,
+  Group, Scene,
   PerspectiveCamera, LineBasicMaterial,
   Geometry, Line, Vector3,
 } from 'three';
-import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
+import { getCanvasSize, onresize, createRenderer } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
-  const renderer = new WebGLRenderer({
-    canvas,
-    antialias: true,
-  });
-  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x191919);
+  const renderer = createRenderer(canvas, 0x191919);
 
   const scene = new Scene();
 

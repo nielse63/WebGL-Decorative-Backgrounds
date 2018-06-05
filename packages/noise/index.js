@@ -44,7 +44,6 @@ export default (xin, yin, zin) => {
   const gradP = new Array(512);
 
   const init = (seed) => {
-    /* eslint-disable no-param-reassign */
     if (seed > 0 && seed < 1) {
       // Scale the seed out
       seed *= 65536;

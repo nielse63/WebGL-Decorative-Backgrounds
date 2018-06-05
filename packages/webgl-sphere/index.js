@@ -1,19 +1,13 @@
 import {
-  WebGLRenderer, Scene, PerspectiveCamera, Group,
+  Scene, PerspectiveCamera, Group,
   LineBasicMaterial, Geometry, Vector3, Line,
 } from 'three';
 import noise from '@nielse63/noise';
-import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
+import { getCanvasSize, onresize, createRenderer } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
-  const renderer = new WebGLRenderer({
-    canvas,
-    antialias: true,
-  });
-  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x000000, 0);
+  const renderer = createRenderer(canvas);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(40, width / height, 0.1, 1000);

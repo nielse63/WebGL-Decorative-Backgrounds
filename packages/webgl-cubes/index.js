@@ -1,24 +1,27 @@
 import {
-  Vector3, WebGLRenderer, Scene,
-  PerspectiveCamera, BoxGeometry, MeshBasicMaterial,
+  Vector3, Scene, PerspectiveCamera,
+  BoxGeometry, MeshBasicMaterial,
   Mesh, DoubleSide,
 } from 'three';
 import noise from '@nielse63/noise';
-import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
+import { getCanvasSize, onresize, createRenderer } from '@nielse63/webgl-utils';
 
-// eslint-disable-next-line complexity
+function faceMaterialIndexValue(value, segments) {
+  return Math.floor(value + 25) % (segments * 2) < segments ? 0 : 1;
+}
+
 function setFaceVector(geometry, face, segments) {
   const v1 = geometry.vertices[face.a];
   const v2 = geometry.vertices[face.b];
   const v3 = geometry.vertices[face.c];
   const center = new Vector3();
   center.add(v1).add(v2).add(v3).divideScalar(3);
-  face.materialIndex = Math.floor(center.y + 25) % (segments * 2) < segments ? 0 : 1;
+  face.materialIndex = faceMaterialIndexValue(center.y, segments);
   if (center.y === 24.5) {
     face.materialIndex = 0;
   }
   if (face.materialIndex === 0) {
-    face.materialIndex = Math.floor(center.x + 25) % (segments * 2) < segments ? 0 : 1;
+    face.materialIndex = faceMaterialIndexValue(center.x, segments);
     if (center.x === 24.5) {
       face.materialIndex = 0;
     }
@@ -27,13 +30,7 @@ function setFaceVector(geometry, face, segments) {
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
-  const renderer = new WebGLRenderer({
-    canvas,
-    antialias: true,
-  });
-  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x0F1617);
+  const renderer = createRenderer(canvas, 0x0F1617);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);

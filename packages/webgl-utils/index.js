@@ -1,3 +1,4 @@
+import { WebGLRenderer, ShaderMaterial } from 'three';
 import image from './dot-texture.png';
 
 export function getCanvasSize(canvas) {
@@ -7,7 +8,6 @@ export function getCanvasSize(canvas) {
 }
 
 export function onresize(canvas, camera, renderer) {
-  /* eslint-disable no-param-reassign */
   canvas.style.width = '';
   canvas.style.height = '';
   const width = canvas.offsetWidth;
@@ -18,3 +18,30 @@ export function onresize(canvas, camera, renderer) {
 }
 
 export const dotTextureImage = image;
+
+export const createRenderer = (canvas, clearColor = 0x000000) => {
+  const { width, height } = getCanvasSize(canvas);
+  const renderer = new WebGLRenderer({
+    canvas,
+    antialias: true,
+  });
+  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
+  renderer.setSize(width, height);
+  renderer.setClearColor(clearColor);
+  return renderer;
+};
+
+export const createShaderMaterial = (
+  vertexShaderSelector,
+  fragmentShaderSelector,
+  dotTexture,
+) => new ShaderMaterial({
+  uniforms: {
+    texture: {
+      value: dotTexture,
+    },
+  },
+  vertexShader:   document.getElementById(vertexShaderSelector).textContent,
+  fragmentShader: document.getElementById(fragmentShaderSelector).textContent,
+  transparent:    true,
+});

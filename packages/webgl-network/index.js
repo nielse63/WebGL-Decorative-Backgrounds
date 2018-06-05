@@ -1,12 +1,15 @@
 import {
-  Color, WebGLRenderer, Scene, VertexColors as vertexColors,
+  Color, Scene, VertexColors as vertexColors,
   Raycaster, PerspectiveCamera, Group,
   TextureLoader, Geometry, Vector3,
-  BufferGeometry, BufferAttribute, ShaderMaterial,
+  BufferGeometry, BufferAttribute,
   Points, LineBasicMaterial, LineSegments,
 } from 'three';
 import { TweenLite } from 'gsap';
-import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
+import {
+  getCanvasSize, onresize, dotTextureImage,
+  createRenderer, createShaderMaterial,
+} from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
@@ -15,13 +18,7 @@ export default (canvas) => {
     new Color(0x96789f),
     new Color(0x535353),
   ];
-  const renderer = new WebGLRenderer({
-    canvas,
-    antialias: true,
-  });
-  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x000000);
+  const renderer = createRenderer(canvas);
 
   const scene = new Scene();
 
@@ -78,16 +75,11 @@ export default (canvas) => {
   bufferWrapGeom.addAttribute('size', attributeSizes);
   const attributeColors = new BufferAttribute(colorsAttribute, 3);
   bufferWrapGeom.addAttribute('color', attributeColors);
-  const shaderMaterial = new ShaderMaterial({
-    uniforms: {
-      texture: {
-        value: dotTexture,
-      },
-    },
-    vertexShader:   document.getElementById('wrapVertexShaderNetwork').textContent,
-    fragmentShader: document.getElementById('wrapFragmentShaderNetwork').textContent,
-    transparent:    true,
-  });
+  const shaderMaterial = createShaderMaterial(
+    'wrapVertexShaderNetwork',
+    'wrapVertexShaderNetwork',
+    dotTexture,
+  );
   const wrap = new Points(bufferWrapGeom, shaderMaterial);
   scene.add(wrap);
 

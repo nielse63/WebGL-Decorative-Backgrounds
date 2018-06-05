@@ -1,20 +1,17 @@
 import {
-  WebGLRenderer, Scene, PerspectiveCamera, Geometry,
-  TextureLoader, IcosahedronGeometry, BufferGeometry,
-  BufferAttribute, ShaderMaterial, Points,
+  Scene, PerspectiveCamera, Geometry, TextureLoader,
+  IcosahedronGeometry, BufferGeometry,
+  BufferAttribute, Points,
 } from 'three';
 import { TweenLite } from 'gsap';
-import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
+import {
+  getCanvasSize, onresize, dotTextureImage,
+  createRenderer, createShaderMaterial,
+} from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
-  const renderer = new WebGLRenderer({
-    canvas,
-    antialias: true,
-  });
-  renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x59c384);
+  const renderer = createRenderer(canvas, 0x59c384);
 
   const scene = new Scene();
 
@@ -71,16 +68,21 @@ export default (canvas) => {
 
   const attributePositions = new BufferAttribute(positions, 3);
   bufferDotsGeom.addAttribute('position', attributePositions);
-  const shaderMaterial = new ShaderMaterial({
-    uniforms: {
-      texture: {
-        value: dotTexture,
-      },
-    },
-    vertexShader:   document.getElementById('wrapVertexShaderWaves').textContent,
-    fragmentShader: document.getElementById('wrapFragmentShaderWaves').textContent,
-    transparent:    true,
-  });
+  const shaderMaterial = createShaderMaterial(
+    'wrapVertexShaderWaves',
+    'wrapFragmentShaderWaves',
+    dotTexture,
+  );
+  // const shaderMaterial = new ShaderMaterial({
+  //   uniforms: {
+  //     texture: {
+  //       value: dotTexture,
+  //     },
+  //   },
+  //   vertexShader:   document.getElementById('wrapVertexShaderWaves').textContent,
+  //   fragmentShader: document.getElementById('wrapFragmentShaderWaves').textContent,
+  //   transparent:    true,
+  // });
   const dots = new Points(bufferDotsGeom, shaderMaterial);
   scene.add(dots);
 
