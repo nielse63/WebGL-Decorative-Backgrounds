@@ -1,8 +1,4 @@
-
-export function getCanvas() {
-  const canvas = document.querySelector('canvas');
-  return canvas;
-}
+import image from './dot-texture.png';
 
 export function getCanvasSize(canvas) {
   const width = canvas.offsetWidth;
@@ -20,3 +16,5 @@ export function onresize(canvas, camera, renderer) {
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
 }
+
+export const dotTextureImage = image;

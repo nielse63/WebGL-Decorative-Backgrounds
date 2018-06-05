@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/nielse63/WebGL-Decorative-Backgrounds.git",
-  "author": "Erik Nielsen <enielsen@enova.com>",
+  "author": "Erik Nielsen <erik@312development.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/ *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix",
-    "prebuild": "yarn run lint",
-    "build": "webpack --mode=production",
+    "lint": "eslint packages/ *.js --fix --cache",
+    "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
+    "prebuild": "rm -rf dist; yarn run lint",
+    "build": "webpack",
     "test": "echo 'no tests created yet!'",
     "release": "release-it",
     "serve": "http-server docs/"
   },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -23,9 +25,12 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-monorepo": "^0.2.0",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "img-loader": "^3.0.0",
+    "lerna": "^2.11.0",
     "lint-staged": "^7.1.3",
     "release-it": "^7.4.6",
     "webpack": "^4.10.2",
@@ -40,9 +45,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "dependencies": {
-    "gsap": "^2.0.1",
-    "three": "^0.93.0"
   }
 }

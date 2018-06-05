@@ -1,11 +1,10 @@
-import TweenMax from 'gsap/TweenMax';
 import {
   WebGLRenderer, Scene, PerspectiveCamera, Geometry,
   TextureLoader, IcosahedronGeometry, BufferGeometry,
   BufferAttribute, ShaderMaterial, Points,
 } from 'three';
-import { getCanvasSize, onresize } from '@/utils';
-import dotTextureImage from '@/images/dot-texture.png';
+import TweenMax from 'gsap/TweenMax';
+import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);

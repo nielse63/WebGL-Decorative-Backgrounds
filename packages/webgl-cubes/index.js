@@ -3,8 +3,8 @@ import {
   PerspectiveCamera, BoxGeometry, MeshBasicMaterial,
   Mesh, DoubleSide,
 } from 'three';
-import noise from '@/noise';
-import { getCanvasSize, onresize } from '@/utils';
+import noise from '@nielse63/noise';
+import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
 
 // eslint-disable-next-line complexity
 function setFaceVector(geometry, face, segments) {

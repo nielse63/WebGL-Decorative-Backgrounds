@@ -3,7 +3,7 @@ import {
   PerspectiveCamera, LineBasicMaterial,
   Geometry, Line, Vector3,
 } from 'three';
-import { getCanvasSize, onresize } from '@/utils';
+import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);

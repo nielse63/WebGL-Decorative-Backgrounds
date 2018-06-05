@@ -12,6 +12,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:monorepo/recommended',
   ],
   settings: {
     'import/resolver': {
@@ -25,7 +26,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/backgrounds/*.js'],
+      files: ['packages/**/*.js'],
       rules: {
         'no-param-reassign': 'off',
       },

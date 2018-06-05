@@ -6,8 +6,7 @@ import {
   Points, LineBasicMaterial, LineSegments,
 } from 'three';
 import TweenMax from 'gsap/TweenMax';
-import { getCanvasSize, onresize } from '@/utils';
-import dotTextureImage from '@/images/dot-texture.png';
+import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
