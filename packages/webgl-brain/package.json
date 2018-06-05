@@ -1,11 +1,11 @@
 {
   "name": "@nielse63/webgl-brain",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "author": "Erik Nielsen <erik@312development.com> (https://312development.com)",
   "license": "MIT",
   "dependencies": {
-    "@nielse63/webgl-utils": "^1.0.1",
+    "@nielse63/webgl-utils": "^1.0.2",
     "three": "^0.93.0"
   }
 }
