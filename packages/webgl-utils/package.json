@@ -1,6 +1,6 @@
 {
   "name": "@nielse63/webgl-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "author": "Erik Nielsen <erik@312development.com>",
   "license": "MIT",
