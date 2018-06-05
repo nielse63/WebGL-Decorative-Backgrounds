@@ -13,7 +13,7 @@
 * [Sphere](https://nielse63.github.io/WebGL-Decorative-Backgrounds/sphere.html)
 * [Waves](https://nielse63.github.io/WebGL-Decorative-Backgrounds/waves.html)
 
-![WebGL Decorative Backgrounds](https://s3.us-east-2.amazonaws.com/github-storage/cubes.min.gif)
+![WebGL Decorative Backgrounds](src/images/screenshots/cubes.min.gif "WebGL Decorative Backgrounds")
 
 Based on the amazing work from the people at Codrops, this is a modern, lightweight extension of previously crafted WebGL Decorative Backgrounds.
 
