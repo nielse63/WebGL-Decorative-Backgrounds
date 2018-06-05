@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const pkg = require('./package.json');
 
 const env = process.env.NODE_ENV || 'development';
@@ -29,15 +30,16 @@ const links = backgrounds.map(({ lowercase, capitalized }) => ({
 }));
 const htmlTemplates = backgrounds
   .map(({ lowercase, capitalized, slug }) => new HtmlWebpackPlugin({
-    filename: `${lowercase}.html`,
-    template: 'src/sample.html',
-    title:    `${capitalized} Demo | ${packageName}`,
-    name:     capitalized,
-    repo:     `https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/${slug}`,
+    inlineSource: '.(js|css)$',
+    filename:     `${lowercase}.html`,
+    template:     'src/sample.html',
+    title:        `${capitalized} Demo | ${packageName}`,
+    name:         capitalized,
+    repo:         `https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/${slug}`,
     links,
   }));
 
-const config = {
+module.exports = {
   mode,
   resolve: {
     extensions: ['.js', '.json', '.scss'],
@@ -106,32 +108,5 @@ const config = {
       chunks:   ['main'],
       links,
     }),
-  ].concat(htmlTemplates),
+  ].concat(htmlTemplates).concat([new HtmlWebpackInlineSourcePlugin()]),
 };
-
-if (!isDev) {
-  config.stats = {
-    chunks: true,
-  };
-  config.optimization = {
-    minimize:     true,
-    runtimeChunk: {
-      name: 'manifest',
-    },
-    splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test:   /node_modules/,
-          name:   'vendors',
-          chunks: 'all',
-        },
-        default: {
-          priority:           -20,
-          reuseExistingChunk: true,
-        },
-      },
-    },
-  };
-}
-
-module.exports = config;
