@@ -2,8 +2,13 @@
 
 > Sample decorative backgrounds using WebGL
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability)
 [![Build Status](https://travis-ci.org/nielse63/WebGL-Decorative-Backgrounds.svg?branch=master)](https://travis-ci.org/nielse63/WebGL-Decorative-Backgrounds)
+[![npm](https://img.shields.io/npm/v/webgl-decorative-backgrounds.svg)](https://www.npmjs.com/package/webgl-decorative-backgrounds)
+![node](https://img.shields.io/node/v/webgl-decorative-backgrounds.svg)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability)
+![David](https://img.shields.io/david/nielse63/webgl-decorative-backgrounds.svg)
+![David](https://img.shields.io/david/dev/nielse63/webgl-decorative-backgrounds.svg)
 
 ## Demos
 
@@ -47,12 +52,6 @@ const canvas = document.querySelector('canvas');
 cubes(canvas);
 ```
 
-## Credits
+## Credit
 
 * [Original Article on Codrops](https://tympanus.net/codrops/2017/11/28/decorative-webgl-backgrounds/)
-
-## Resources
-
-* [Three.js](https://threejs.org/)
-* [TweenMax](https://www.npmjs.com/package/gsap)
-* [Simplex Noise](https://github.com/nielse63/node-simplex-noise)

@@ -7,7 +7,9 @@ const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
 const mode = isDev ? env : 'production';
 const setPath = dir => path.resolve(__dirname, dir);
-const packageName = pkg.name.replace(/-/g, ' ');
+const packageName = pkg.repository.split('/').pop()
+  .replace(/-/g, ' ')
+  .replace(/\.git/, '');
 const backgrounds = Object.keys(pkg.dependencies).map((dep) => {
   const slug = dep.replace(/@nielse63\//, '');
   const lowercase = slug.replace(/webgl-/, '');

@@ -1,5 +1,5 @@
 {
-  "name": "WebGL-Decorative-Backgrounds",
+  "name": "webgl-decorative-backgrounds",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/nielse63/WebGL-Decorative-Backgrounds.git",
@@ -51,13 +51,19 @@
   "optionalDependencies": {
     "imagemin-cli": "^3.0.0",
     "pm2": "^2.10.4",
-    "puppeteer": "^1.4.0"
+    "puppeteer": "^1.4.0",
+    "release-it": "^7.4.7"
   },
   "browserslist": [
     "> 5%",
     "last 2 major versions",
     "not ie <= 9"
   ],
+  "engines": {
+    "node": ">= 9.x",
+    "npm": ">= 5.6.x",
+    "yarn": ">= 1.x"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
