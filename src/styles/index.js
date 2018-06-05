@@ -1,3 +1,1 @@
-import styles from './demo.scss';
-
-console.log(styles);
+import './demo.scss';

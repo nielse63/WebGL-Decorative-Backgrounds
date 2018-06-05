@@ -3,58 +3,101 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: Roboto;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
   min-height: 100vh;
-  background-color: #111;
+  background-color: #fff;
 }
 
-canvas,
-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+canvas {
   width: 100vw;
-  height: 100vh;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
+  height: calc(100vh - 65px);
   display: block;
+  margin: 0;
 }
 
-header,
-nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 2rem;
-  z-index: 1;
+a {
+  text-decoration: none;
+}
+
+.active {
+  border-bottom-color: currentColor;
 }
 
 header {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
   top: 0;
   justify-content: flex-start;
   padding: 1rem 2rem;
+  padding: 2rem;
+
+  a {
+    display: block;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+
+    &[href="*.html"] {
+      &:hover {
+        @extend .active;
+      }
+    }
+
+    + a {
+      margin-left: 1em;
+    }
+  }
 }
 
 nav {
+  display: flex;
+  align-items: center;
+}
+
+.lower-nav {
+  padding: 1rem 2rem;
+  background: #000;
+  border-top: 5px solid #333;
+  font-size: 24px;
+
+  a,
+  span {
+    color: #fff;
+    display: inline-block;
+
+    // ~ * {
+    //   margin-left: 1em;
+    // }
+  }
+
+  span {
+    margin-right: 0.5em;
+    padding-right: 0.5em;
+    border-right: 1px solid currentColor;
+  }
+
+  .pink {
+    color: #ff1960;
+  }
+
+  // .yellow {
+  //   color: #ffc40d;
+  // }
+
+  // .blue {
+  //   color: #2fa1d6;
+  // }
+}
+
+footer {
+  font-family: 'Source Serif Pro', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: absolute;
   bottom: 0;
-}
-
-nav a {
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-}
-
-nav a:hover,
-.active {
-  border-bottom-color: currentColor;
+  left: 0;
+  right: 0;
 }

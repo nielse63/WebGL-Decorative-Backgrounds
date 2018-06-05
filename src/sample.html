@@ -4,25 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>WebGL Backgrounds Demo</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="demo.css">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;Source+Serif+Pro">
 </head>
 <body>
   <header>
-    <figure>
+    <nav>
       <a href="https://github.com/nielse63/WebGL-Decorative-Backgrounds" target="_blank">
         <img src="images/github-icon.svg" alt="github" height="30">
       </a>
-    </figure>
+      <a href="/">
+        <img src="images/home.svg" alt="home" height="30">
+      </a>
+      <% for (var object of htmlWebpackPlugin.options.links) { %>
+        <% if (object.href == htmlWebpackPlugin.options.filename) { %>
+          <a href="<%= object.href %>" class="active"><%= object.text %></a>
+        <% } else { %>
+          <a href="<%= object.href %>"><%= object.text %></a>
+        <% } %>
+      <% } %>
+    </nav>
   </header>
-  <nav>
-    <a href="#network">Network</a>
-    <a href="#waves">Waves</a>
-    <a href="#quantum">Quantum</a>
-    <a href="#sphere">Sphere</a>
-    <a href="#cubes">Cubes</a>
-    <a href="#brain">Brain</a>
-  </nav>
+  <main>
+    <canvas id="scene" height="100%" width="100%"></canvas>
+  </main>
+  <footer>
+    <nav class="lower-nav">
+      <span><%= htmlWebpackPlugin.options.name %></span>
+      <a href="<%= htmlWebpackPlugin.options.repo %>" class="pink" target="_blank">View Source</a>
+    </nav>
+  </footer>
 </body>
 </html>

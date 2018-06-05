@@ -4,21 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>WebGL Backgrounds Demo</title>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto" onload="this.rel='stylesheet'">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 <body>
   <header>
-    <figure>
+    <nav>
       <a href="https://github.com/nielse63/WebGL-Decorative-Backgrounds" target="_blank">
         <img src="images/github-icon.svg" alt="github" height="30">
       </a>
-    </figure>
+      <a href="/">
+        <img src="images/home.svg" alt="home" height="30">
+      </a>
+      <% for (var object of htmlWebpackPlugin.options.links) { %>
+        <a href="<%= object.href %>"><%= object.text %></a>
+      <% } %>
+    </nav>
   </header>
-  <nav>
-    <% for (var object of htmlWebpackPlugin.options.links) { %>
-      <a href="<%= object.href %>"><%= object.text %></a>
-    <% } %>
-  </nav>
 </body>
 </html>

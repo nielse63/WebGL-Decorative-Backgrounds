@@ -1,12 +1,12 @@
 {
-  "name": "webgl-decorative-backgrounds",
+  "name": "WebGL-Decorative-Backgrounds",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/nielse63/WebGL-Decorative-Backgrounds.git",
   "author": "Erik Nielsen <erik@312development.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint packages/ *.js --fix --cache",
+    "lint": "eslint src/ packages/ *.js --fix --cache",
     "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
     "prebuild": "rm -rf dist; yarn run lint",
     "build": "webpack",
@@ -18,11 +18,12 @@
     "@nielse63/webgl-brain": "^1.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
-    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",

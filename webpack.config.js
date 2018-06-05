@@ -1,50 +1,48 @@
-// const fs = require('fs');
 const path = require('path');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 
 const setPath = dir => path.resolve(__dirname, dir);
 const packageName = pkg.name.replace(/-/g, ' ');
 const backgrounds = Object.keys(pkg.dependencies)
   .filter(dep => /^@nielse63/.test(dep) && !/-utils$/.test(dep))
-  .map(dep => dep.replace(/@nielse63\/webgl-/, ''));
-const htmlTemplates = backgrounds.map(background => new HtmlWebpackPlugin({
-  filename: `${background}.html`,
+  // .map(dep => dep.replace(/@nielse63\/webgl-/, ''))
+  .map((dep) => {
+    const slug = dep.replace(/@nielse63\//, '');
+    const lowercase = dep.replace(/@nielse63\/webgl-/, '');
+    return {
+      slug,
+      lowercase,
+      capitalized: lowercase.replace(/\b\w/g, l => l.toUpperCase()),
+    };
+  });
+const links = backgrounds.map(({ lowercase, capitalized }) => ({
+  href: `${lowercase}.html`,
+  text: capitalized,
+}));
+const htmlTemplates = backgrounds.map(({ lowercase, capitalized, slug }) => new HtmlWebpackPlugin({
+  filename: `${lowercase}.html`,
   template: 'src/sample.html',
-  chunks:   ['samples'],
-  title:    `${background} Demo | ${packageName}`,
+  title:    `${capitalized} Demo | ${packageName}`,
+  name:     capitalized,
+  repo:     `https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/${slug}`,
+  links,
 }));
-const links = backgrounds.map(background => ({
-  href: `${background}.html`,
-  text: background,
-}));
-
-// create entries
-// const packagesDir = setPath('packages');
-// const entries = {};
-// fs.readdirSync(packagesDir)
-//   .filter(dir => /^webgl/.test(dir) && !/-utils$/.test(dir))
-//   .map(dir => dir.replace(/webgl-/, ''))
-//   .forEach((name) => {
-//     entries[name] = `./packages/webgl-${name}/index.js`;
-//   });
-
+console.log(htmlTemplates);
 
 module.exports = {
   mode:    'development',
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.json', '.html', '.scss', '.css'],
     alias:      {
       '@': setPath('src'),
     },
   },
-  // entry:  entries,
   entry: {
     main:    './src/js/main.js',
     samples: './src/js/samples.js',
-    styles:  './src/styles/index.js',
   },
   output: {
     path:     setPath('dist'),
@@ -75,28 +73,26 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s?[ac]ss$/,
         use:  [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader',
-          // IN_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
-          // 'css-loader',
-          // 'postcss-loader',
-          // 'sass-loader',
         ],
       },
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin([
-    //   'dist/',
-    // ]),
+    new CopyWebpackPlugin([
+      {
+        from:   setPath('src/images'),
+        to:     setPath('dist/images'),
+        ignore: ['.*'],
+      },
+    ]),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: '[name].css',
+      filename: 'styles/[name].css',
     }),
     new HtmlWebpackPlugin({
       title:    packageName,
@@ -105,10 +101,5 @@ module.exports = {
       chunks:   ['main'],
       links,
     }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'sample.html',
-    //   template: 'src/sample.html',
-    //   chunks:   ['samples'],
-    // }),
   ].concat(htmlTemplates),
 };
