@@ -1,19 +1,19 @@
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const setPath = dir => path.resolve(__dirname, dir);
 
-const packagesDir = setPath('packages');
-
 // create entries
-const entries = {};
-fs.readdirSync(packagesDir)
-  .filter(dir => /^webgl/.test(dir) && !/-utils$/.test(dir))
-  .map(dir => dir.replace(/webgl-/, ''))
-  .forEach((name) => {
-    entries[name] = `./packages/webgl-${name}/index.js`;
-  });
+// const packagesDir = setPath('packages');
+// const entries = {};
+// fs.readdirSync(packagesDir)
+//   .filter(dir => /^webgl/.test(dir) && !/-utils$/.test(dir))
+//   .map(dir => dir.replace(/webgl-/, ''))
+//   .forEach((name) => {
+//     entries[name] = `./packages/webgl-${name}/index.js`;
+//   });
 
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
       '@': setPath('src'),
     },
   },
-  entry:  entries,
+  // entry:  entries,
+  entry: {
+    main:    './src/js/main.js',
+    samples: './src/js/samples.js',
+  },
   output: {
     path:     setPath('dist'),
     filename: 'js/[name].js',
@@ -56,8 +60,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([
-      'dist/',
-    ]),
+    // new CleanWebpackPlugin([
+    //   'dist/',
+    // ]),
+    new HtmlWebpackPlugin({ // Also generate a test.html
+      filename: 'index.html',
+      template: 'src/index.html',
+      chunks:   ['main'],
+    }),
   ],
 };

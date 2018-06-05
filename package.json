@@ -8,12 +8,13 @@
   "scripts": {
     "lint": "eslint packages/ *.js --fix --cache",
     "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
-    "prebuild": "yarn run lint",
+    "prebuild": "rm -rf dist; yarn run lint",
     "build": "webpack",
     "test": "echo 'no tests created yet!'",
     "release": "release-it",
     "serve": "http-server docs/"
   },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-monorepo": "^0.2.0",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "img-loader": "^3.0.0",
     "lerna": "^2.11.0",
@@ -43,9 +45,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "dependencies": {
-    "gsap": "^2.0.1",
-    "three": "^0.93.0"
   }
 }

@@ -4,8 +4,7 @@ import {
   BufferAttribute, ShaderMaterial, Points,
 } from 'three';
 import TweenMax from 'gsap/TweenMax';
-import { getCanvasSize, onresize } from '@nielse63/webgl-utils';
-import dotTextureImage from '../../src/images/dot-texture.png';
+import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
   const { width, height } = getCanvasSize(canvas);
