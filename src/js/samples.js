@@ -1,20 +1,25 @@
 
-import brain from '@nielse63/webgl-brain';
+import brain from '$packages/webgl-brain';
+import cubes from '$packages/webgl-cubes';
+import network from '$packages/webgl-network';
+import sphere from '$packages/webgl-sphere';
+import waves from '$packages/webgl-waves';
 
 const backgrounds = {
   brain,
+  cubes,
+  network,
+  sphere,
+  waves,
 };
 
-window.onload = () => {
+window.addEventListener('load', () => {
   const file = window.location.pathname || window.location.path;
   const key = file
     .replace(/\//g, '')
     .replace(/\.html/, '')
     .trim();
   const fn = backgrounds[key];
-  if (!fn) {
-    throw new Error(`No background for ${key} was found`);
-  }
   const canvas = document.querySelector('#scene');
   fn(canvas);
-};
+}, false);

@@ -85,17 +85,6 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nielse63/webgl-brain@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-brain/-/webgl-brain-1.0.1.tgz#c3fd5724074333865394d7fac1a3dd66a29d7ff7"
-  dependencies:
-    "@nielse63/webgl-utils" "^1.0.1"
-    three "^0.93.0"
-
-"@nielse63/webgl-utils@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.1.tgz#dd7e3319267519aded679df3a274aec5b33eed12"
-
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
@@ -3178,6 +3167,10 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
+
+gif.js@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/gif.js/-/gif.js-0.2.0.tgz#615e6e3788850cd3a20c85fe9f09539e784903e8"
 
 git-raw-commits@^1.3.0, git-raw-commits@^1.3.6:
   version "1.3.6"
@@ -6865,10 +6858,6 @@ text-extensions@^1.0.0:
 text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
-
-three@^0.93.0:
-  version "0.93.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.93.0.tgz#3fd6c367ef4554abbb6e16ad69936283e895c123"
 
 through2@^2.0.0, through2@^2.0.2:
   version "2.0.3"

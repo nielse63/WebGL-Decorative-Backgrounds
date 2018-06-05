@@ -4,40 +4,46 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package.json');
 
+const env = process.env.NODE_ENV || 'development';
+const isDev = env === 'development';
+const mode = isDev ? env : 'production';
 const setPath = dir => path.resolve(__dirname, dir);
 const packageName = pkg.name.replace(/-/g, ' ');
-const backgrounds = Object.keys(pkg.dependencies)
-  .filter(dep => /^@nielse63/.test(dep) && !/-utils$/.test(dep))
-  // .map(dep => dep.replace(/@nielse63\/webgl-/, ''))
-  .map((dep) => {
-    const slug = dep.replace(/@nielse63\//, '');
-    const lowercase = dep.replace(/@nielse63\/webgl-/, '');
-    return {
-      slug,
-      lowercase,
-      capitalized: lowercase.replace(/\b\w/g, l => l.toUpperCase()),
-    };
-  });
+const backgrounds = [
+  'webgl-brain',
+  'webgl-cubes',
+  'webgl-network',
+  'webgl-sphere',
+  'webgl-waves',
+].map((dep) => {
+  const lowercase = dep.replace(/webgl-/, '');
+  return {
+    lowercase,
+    slug:        dep,
+    capitalized: lowercase.replace(/\b\w/g, l => l.toUpperCase()),
+  };
+});
 const links = backgrounds.map(({ lowercase, capitalized }) => ({
   href: `${lowercase}.html`,
   text: capitalized,
 }));
-const htmlTemplates = backgrounds.map(({ lowercase, capitalized, slug }) => new HtmlWebpackPlugin({
-  filename: `${lowercase}.html`,
-  template: 'src/sample.html',
-  title:    `${capitalized} Demo | ${packageName}`,
-  name:     capitalized,
-  repo:     `https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/${slug}`,
-  links,
-}));
-console.log(htmlTemplates);
+const htmlTemplates = backgrounds
+  .map(({ lowercase, capitalized, slug }) => new HtmlWebpackPlugin({
+    filename: `${lowercase}.html`,
+    template: 'src/sample.html',
+    title:    `${capitalized} Demo | ${packageName}`,
+    name:     capitalized,
+    repo:     `https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/${slug}`,
+    links,
+  }));
 
-module.exports = {
-  mode:    'development',
+const config = {
+  mode,
   resolve: {
-    extensions: ['.js', '.json', '.html', '.scss', '.css'],
+    extensions: ['.js', '.json', '.scss'],
     alias:      {
-      '@': setPath('src'),
+      '@':       setPath('src'),
+      $packages: setPath('packages'),
     },
   },
   entry: {
@@ -65,7 +71,6 @@ module.exports = {
             options: {
               name:            '[name].[ext]',
               outputPath:      'images/',
-              // publicPath:      '../images/',
               useRelativePath: false,
             },
           },
@@ -103,3 +108,30 @@ module.exports = {
     }),
   ].concat(htmlTemplates),
 };
+
+if (!isDev) {
+  config.stats = {
+    chunks: true,
+  };
+  config.optimization = {
+    minimize:     true,
+    runtimeChunk: {
+      name: 'manifest',
+    },
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test:   /node_modules/,
+          name:   'vendors',
+          chunks: 'all',
+        },
+        default: {
+          priority:           -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  };
+}
+
+module.exports = config;

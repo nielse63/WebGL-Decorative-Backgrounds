@@ -3,7 +3,7 @@ import {
   TextureLoader, IcosahedronGeometry, BufferGeometry,
   BufferAttribute, ShaderMaterial, Points,
 } from 'three';
-import TweenMax from 'gsap/TweenMax';
+import { TweenLite } from 'gsap';
 import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
@@ -37,15 +37,19 @@ export default (canvas) => {
     positions[(i3) + 2] = vector.z;
   }
 
+  function onComplete() {
+    this.reversed(!this.reversed());
+  }
+
   function animateDot(index, vector) {
-    TweenMax.to(vector, 4, {
-      x:        0,
-      z:        0,
-      ease:     window.Back.easeOut,
-      delay:    Math.abs(vector.y / radius) * 2,
-      repeat:   -1,
-      yoyo:     true,
-      yoyoEase: window.Back.easeOut,
+    TweenLite.to(vector, 4, {
+      x:                 0,
+      z:                 0,
+      ease:              window.Back.easeOut,
+      delay:             Math.abs(vector.y / radius) * 2,
+      repeat:            -1,
+      onComplete,
+      onReverseComplete: onComplete,
       onUpdate() {
         updateDot(index, vector);
       },

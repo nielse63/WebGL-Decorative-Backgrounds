@@ -8,15 +8,14 @@
   "scripts": {
     "lint": "eslint src/ packages/ *.js --fix --cache",
     "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
+    "watch": "NODE_ENV=development webpack --watch",
     "prebuild": "rm -rf dist; yarn run lint",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack --mode=production",
     "test": "echo 'no tests created yet!'",
     "release": "release-it",
     "serve": "http-server dist/"
   },
-  "dependencies": {
-    "@nielse63/webgl-brain": "^1.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",
@@ -54,5 +53,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "optionalDependencies": {
+    "gif.js": "^0.2.0"
   }
 }

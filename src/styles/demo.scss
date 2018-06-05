@@ -8,6 +8,10 @@ html {
   background-color: #fff;
 }
 
+.home {
+  background-color: #333;
+}
+
 canvas {
   width: 100vw;
   height: calc(100vh - 65px);
@@ -45,6 +49,7 @@ header {
     &[href="*.html"] {
       &:hover {
         @extend .active;
+        color: #ff1960;
       }
     }
 
@@ -69,10 +74,6 @@ nav {
   span {
     color: #fff;
     display: inline-block;
-
-    // ~ * {
-    //   margin-left: 1em;
-    // }
   }
 
   span {
@@ -100,4 +101,10 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(3, 300px);
+  grid-template-columns: 50% 50%;
 }

@@ -5,7 +5,7 @@ import {
   BufferGeometry, BufferAttribute, ShaderMaterial,
   Points, LineBasicMaterial, LineSegments,
 } from 'three';
-import TweenMax from 'gsap/TweenMax';
+import { TweenLite } from 'gsap';
 import { getCanvasSize, onresize, dotTextureImage } from '@nielse63/webgl-utils';
 
 export default (canvas) => {
@@ -133,17 +133,22 @@ export default (canvas) => {
     renderer.render(scene, camera);
   }
 
+  function onComplete() {
+    this.reversed(!this.reversed());
+  }
+
   function moveDot(vector, index) {
     const tempVector = vector.clone();
     tempVector.multiplyScalar(((Math.random() - 0.5) * 0.2) + 1);
-    TweenMax.to(vector, (Math.random() * 3) + 3, {
-      x:      tempVector.x,
-      y:      tempVector.y,
-      z:      tempVector.z,
-      yoyo:   true,
-      repeat: -1,
-      delay:  -(Math.random() * 3),
-      ease:   window.Power0.easeNone,
+    TweenLite.to(vector, (Math.random() * 3) + 3, {
+      x:                 tempVector.x,
+      y:                 tempVector.y,
+      z:                 tempVector.z,
+      repeat:            -1,
+      delay:             -(Math.random() * 3),
+      ease:              window.Power0.easeNone,
+      onComplete,
+      onReverseComplete: onComplete,
       onUpdate() {
         attributePositions.array[index * 3] = vector.x;
         attributePositions.array[(index * 3) + 1] = vector.y;
