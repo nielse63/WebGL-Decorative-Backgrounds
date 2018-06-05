@@ -2,8 +2,24 @@
 const path = require('path');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const pkg = require('./package.json');
 
 const setPath = dir => path.resolve(__dirname, dir);
+const packageName = pkg.name.replace(/-/g, ' ');
+const backgrounds = Object.keys(pkg.dependencies)
+  .filter(dep => /^@nielse63/.test(dep) && !/-utils$/.test(dep))
+  .map(dep => dep.replace(/@nielse63\/webgl-/, ''));
+const htmlTemplates = backgrounds.map(background => new HtmlWebpackPlugin({
+  filename: `${background}.html`,
+  template: 'src/sample.html',
+  chunks:   ['samples'],
+  title:    `${background} Demo | ${packageName}`,
+}));
+const links = backgrounds.map(background => ({
+  href: `${background}.html`,
+  text: background,
+}));
 
 // create entries
 // const packagesDir = setPath('packages');
@@ -28,6 +44,7 @@ module.exports = {
   entry: {
     main:    './src/js/main.js',
     samples: './src/js/samples.js',
+    styles:  './src/styles/index.js',
   },
   output: {
     path:     setPath('dist'),
@@ -57,16 +74,41 @@ module.exports = {
           'img-loader',
         ],
       },
+      {
+        test: /\.scss$/,
+        use:  [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+          // IN_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // 'css-loader',
+          // 'postcss-loader',
+          // 'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [
     // new CleanWebpackPlugin([
     //   'dist/',
     // ]),
-    new HtmlWebpackPlugin({ // Also generate a test.html
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+    }),
+    new HtmlWebpackPlugin({
+      title:    packageName,
       filename: 'index.html',
       template: 'src/index.html',
       chunks:   ['main'],
+      links,
     }),
-  ],
+    // new HtmlWebpackPlugin({
+    //   filename: 'sample.html',
+    //   template: 'src/sample.html',
+    //   chunks:   ['samples'],
+    // }),
+  ].concat(htmlTemplates),
 };

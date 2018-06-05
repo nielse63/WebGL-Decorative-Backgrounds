@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>WebGL Backgrounds Demo</title>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto" onload="this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="demo.css">
 </head>
 <body>
   <header>
@@ -16,9 +17,12 @@
     </figure>
   </header>
   <nav>
-    <% for (var object of htmlWebpackPlugin.options.links) { %>
-      <a href="<%= object.href %>"><%= object.text %></a>
-    <% } %>
+    <a href="#network">Network</a>
+    <a href="#waves">Waves</a>
+    <a href="#quantum">Quantum</a>
+    <a href="#sphere">Sphere</a>
+    <a href="#cubes">Cubes</a>
+    <a href="#brain">Brain</a>
   </nav>
 </body>
 </html>
