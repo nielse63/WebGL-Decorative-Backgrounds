@@ -85,50 +85,50 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nielse63/noise@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@nielse63/noise/-/noise-1.0.1.tgz#f750b5f01f7c16b1927cb3a1f5d4b58647080038"
+"@nielse63/noise@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/noise/-/noise-1.0.4.tgz#7660529bd32ca35ac8707cc98f404b42c22a8250"
 
-"@nielse63/webgl-brain@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-brain/-/webgl-brain-1.0.3.tgz#9be5715e642a98f74c6ce6a6e3d860a7d55342f8"
+"@nielse63/webgl-brain@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-brain/-/webgl-brain-1.0.4.tgz#0543e79327a4cd33e3faf6c145f63e8a608124ff"
   dependencies:
-    "@nielse63/webgl-utils" "^1.0.3"
+    "@nielse63/webgl-utils" "1.0.4"
     three "^0.93.0"
 
-"@nielse63/webgl-cubes@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-cubes/-/webgl-cubes-1.0.3.tgz#d11dee2810d95d683fd711c6a2f6e16236d8564c"
+"@nielse63/webgl-cubes@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-cubes/-/webgl-cubes-1.0.4.tgz#09f4a0c9126c30861851eddf7aac9c756873211f"
   dependencies:
-    "@nielse63/noise" "^1.0.1"
-    "@nielse63/webgl-utils" "^1.0.3"
+    "@nielse63/noise" "1.0.4"
+    "@nielse63/webgl-utils" "1.0.4"
     three "^0.93.0"
 
-"@nielse63/webgl-network@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-network/-/webgl-network-1.0.3.tgz#d0901f3bfaa3b863cd970997d147a3fd8452224c"
+"@nielse63/webgl-network@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-network/-/webgl-network-1.0.4.tgz#1862d820400085a7ae92da33a44cba2184825401"
   dependencies:
-    "@nielse63/webgl-utils" "^1.0.3"
+    "@nielse63/webgl-utils" "1.0.4"
     gsap "^2.0.1"
     three "^0.93.0"
 
-"@nielse63/webgl-sphere@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-sphere/-/webgl-sphere-1.0.3.tgz#38e11b4cb401d1351b3e6ba6da4bc549366683ad"
+"@nielse63/webgl-sphere@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-sphere/-/webgl-sphere-1.0.4.tgz#9d601f53f3c2ec9bd6f6601cd933153911e27e35"
   dependencies:
-    "@nielse63/noise" "^1.0.1"
-    "@nielse63/webgl-utils" "^1.0.3"
+    "@nielse63/noise" "1.0.4"
+    "@nielse63/webgl-utils" "1.0.4"
     three "^0.93.0"
 
-"@nielse63/webgl-utils@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.3.tgz#0378c06b24b4941bfd2483916ecfd708047afa03"
+"@nielse63/webgl-utils@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.4.tgz#f000245d16d265c4ce84620cb3ecac1011f5d960"
 
-"@nielse63/webgl-waves@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-waves/-/webgl-waves-1.0.3.tgz#71bd1bae1ba2bef1a5c8855bb35b4c432297a004"
+"@nielse63/webgl-waves@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-waves/-/webgl-waves-1.0.4.tgz#c185cc3f5de88a939c00ab22917c618cb2922191"
   dependencies:
-    "@nielse63/webgl-utils" "^1.0.3"
+    "@nielse63/webgl-utils" "1.0.4"
     gsap "^2.0.1"
     three "^0.93.0"
 
