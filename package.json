@@ -1,6 +1,6 @@
 {
   "name": "webgl-decorative-backgrounds",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "main": "index.js",
   "repository": "https://github.com/nielse63/WebGL-Decorative-Backgrounds.git",
   "author": "Erik Nielsen <erik@312development.com>",
