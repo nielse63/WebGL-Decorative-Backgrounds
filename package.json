@@ -6,12 +6,14 @@
   "author": "Erik Nielsen <erik@312development.com>",
   "license": "MIT",
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "lint": "eslint src/ packages/ *.js --fix --cache",
     "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
     "watch": "NODE_ENV=development webpack --watch",
     "build": "make build",
     "test": "echo 'no tests created yet!'",
-    "serve": "http-server dist/"
+    "serve": "pm2 serve dist 8080",
+    "unserve": "pm2 kill"
   },
   "dependencies": {
     "@nielse63/webgl-brain": "^1.0.3",
@@ -35,7 +37,6 @@
     "eslint-plugin-monorepo": "^0.2.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.11.1",
     "img-loader": "^3.0.0",
     "lerna": "^2.11.0",
     "lint-staged": "^7.1.3",
@@ -56,5 +57,9 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "optionalDependencies": {
+    "pm2": "^2.10.4",
+    "puppeteer": "^1.4.0"
   }
 }

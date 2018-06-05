@@ -9,17 +9,19 @@ const isDev = env === 'development';
 const mode = isDev ? env : 'production';
 const setPath = dir => path.resolve(__dirname, dir);
 const packageName = pkg.name.replace(/-/g, ' ');
-const backgrounds = [
-  'webgl-brain',
-  'webgl-cubes',
-  'webgl-network',
-  'webgl-sphere',
-  'webgl-waves',
-].map((dep) => {
-  const lowercase = dep.replace(/webgl-/, '');
+// const backgrounds = [
+//   'webgl-brain',
+//   'webgl-cubes',
+//   'webgl-network',
+//   'webgl-sphere',
+//   'webgl-waves',
+// ].map((dep) => {
+const backgrounds = Object.keys(pkg.dependencies).map((dep) => {
+  const slug = dep.replace(/@nielse63\//, '');
+  const lowercase = slug.replace(/webgl-/, '');
   return {
     lowercase,
-    slug:        dep,
+    slug,
     capitalized: lowercase.replace(/\b\w/g, l => l.toUpperCase()),
   };
 });
