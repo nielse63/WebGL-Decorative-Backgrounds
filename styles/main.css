@@ -11,7 +11,7 @@ html {
 
 canvas {
   width: 100vw;
-  height: calc(100vh - 65px);
+  height: 100vh;
   display: block;
   margin: 0; }
 
@@ -71,7 +71,39 @@ footer {
   right: 0; }
 
 .grid {
-  display: grid;
-  grid-template-rows: repeat(3, 300px);
-  grid-template-columns: 50% 50%; }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.item {
+  height: 300px;
+  width: 50%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Source Serif Pro', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #fff; }
+  .item figure {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    opacity: 0.5;
+    transition: opacity 0.25s; }
+  .item p {
+    text-shadow: 0 0 25px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 5vw;
+    z-index: 1; }
+  .item:hover figure {
+    opacity: 1; }
 
