@@ -4,9 +4,16 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability)
 
-* [View Demo](https://nielse63.github.io/WebGL-Decorative-Backgrounds/)
+## Demos
 
-![WebGL Decorative Backgrounds](src/images/screenshots/cubes.gif "WebGL Decorative Backgrounds")
+* [Demo Homepage](https://nielse63.github.io/WebGL-Decorative-Backgrounds/)
+* [The Brain](https://nielse63.github.io/WebGL-Decorative-Backgrounds/brain.html)
+* [Cubes](https://nielse63.github.io/WebGL-Decorative-Backgrounds/cubes.html)
+* [Network](https://nielse63.github.io/WebGL-Decorative-Backgrounds/network.html)
+* [Sphere](https://nielse63.github.io/WebGL-Decorative-Backgrounds/sphere.html)
+* [Waves](https://nielse63.github.io/WebGL-Decorative-Backgrounds/waves.html)
+
+![WebGL Decorative Backgrounds](https://s3.us-east-2.amazonaws.com/github-storage/cubes.min.gif)
 
 Based on the amazing work from the people at Codrops, this is a modern, lightweight extension of previously crafted WebGL Decorative Backgrounds.
 
