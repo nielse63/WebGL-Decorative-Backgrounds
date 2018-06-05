@@ -8,6 +8,7 @@ webpack := node_modules/.bin/webpack
 lerna := node_modules/.bin/lerna
 pm2 := node_modules/.bin/pm2
 imagemin := node_modules/.bin/imagemin
+release-it := node_modules/.bin/release-it
 
 build:
 	make clean
@@ -27,6 +28,7 @@ publish:
 	make build
 	$(lerna) publish --force-publish=* --exact --skip-temp-tag
 	yarn upgrade --scope @nielse63 --latest
+	$(release-it)
 
 screenshots:
 	make build
