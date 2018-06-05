@@ -1,6 +1,6 @@
 {
   "name": "@nielse63/webgl-network",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
   "author": "Erik Nielsen <erik@312development.com>",
@@ -8,7 +8,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@nielse63/webgl-utils": "^1.0.3",
+    "@nielse63/webgl-utils": "1.0.4",
     "gsap": "^2.0.1",
     "three": "^0.93.0"
   }
