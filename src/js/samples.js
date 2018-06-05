@@ -14,12 +14,12 @@ const backgrounds = {
 };
 
 window.addEventListener('load', () => {
-  const file = window.location.pathname || window.location.path;
+  const file = window.location.href.split('/').pop();
   const key = file
     .replace(/\//g, '')
     .replace(/\.html/, '')
     .trim();
-  console.log({ backgrounds, key }); // eslint-disable-line
+  console.log({ file, backgrounds, key }); // eslint-disable-line
   const fn = backgrounds[key];
   const canvas = document.querySelector('#scene');
   fn(canvas);
