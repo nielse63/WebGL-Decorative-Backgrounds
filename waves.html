@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Waves Demo | WebGL Decorative Backgrounds</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;Source+Serif+Pro">
+<link href="styles/main.css" rel="stylesheet"></head>
+<body>
+  <header>
+    <nav>
+      <a href="https://github.com/nielse63/WebGL-Decorative-Backgrounds" target="_blank">
+        <img src="images/github-icon.svg" alt="github" height="30">
+      </a>
+      <a href="/">
+        <img src="images/home.svg" alt="home" height="30">
+      </a>
+      
+        
+          <a href="brain.html">Brain</a>
+        
+      
+        
+          <a href="cubes.html">Cubes</a>
+        
+      
+        
+          <a href="network.html">Network</a>
+        
+      
+        
+          <a href="sphere.html">Sphere</a>
+        
+      
+        
+          <a href="waves.html" class="active">Waves</a>
+        
+      
+    </nav>
+  </header>
+  <main>
+    <canvas id="scene" height="100%" width="100%"></canvas>
+    
+    
+      <script type="x-shader/x-vertex" id="wrapVertexShaderWaves">
+        #define PI 3.1415926535897932384626433832795
+        attribute float size;
+        void main() {
+          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+          gl_PointSize = 3.0;
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      </script>
+      <script type="x-shader/x-fragment" id="wrapFragmentShaderWaves">
+        uniform sampler2D texture;
+        void main(){
+          vec4 textureColor = texture2D( texture, gl_PointCoord );
+          if ( textureColor.a < 0.3 ) discard;
+          vec4 dotColor = vec4(0.06, 0.18, 0.36, 0.4);
+          vec4 color = dotColor * textureColor;
+          gl_FragColor = color;
+        }
+      </script>
+    
+  </main>
+  <footer>
+    <nav class="lower-nav">
+      <span>Waves</span>
+      <a href="https://github.com/nielse63/WebGL-Decorative-Backgrounds/tree/master/packages/webgl-waves" class="pink" target="_blank">View Source</a>
+    </nav>
+  </footer>
+<script type="text/javascript" src="js/manifest.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/vendors.js"></script><script type="text/javascript" src="js/samples.js"></script></body>
+</html>
