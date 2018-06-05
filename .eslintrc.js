@@ -12,6 +12,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:monorepo/recommended',
   ],
   settings: {
     'import/resolver': {

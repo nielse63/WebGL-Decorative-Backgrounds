@@ -19,17 +19,29 @@ const removeIframe = () => {
   });
 };
 
+const createPreload = (key) => {
+  const href = `${key}/`;
+  if (document.head.querySelector(`link[href="${href}"]`)) {
+    return;
+  }
+  const element = document.createElement('link');
+  element.href = href;
+  element.rel = 'preload';
+  element.setAttribute('as', 'document');
+  document.head.appendChild(element);
+};
+
 const createIframe = (key) => {
   const nav = document.querySelector('nav');
   const iframe = document.createElement('iframe');
-  iframe.src = key;
+  iframe.src = `${key}/`;
   iframe.setAttribute('frameborder', 0);
   document.body.insertBefore(iframe, nav);
-  // document.body.appendChild(iframe);
 };
 
 const loadBackground = (hash = 'network') => {
   const key = hash.replace(/#/g, '');
+  createPreload(key);
   removeIframe();
   setActiveClass(key);
   createIframe(key);
