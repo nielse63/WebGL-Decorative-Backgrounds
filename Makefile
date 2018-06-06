@@ -33,7 +33,7 @@ publish:
 	node scripts/get-outdated.js
 	git add .
 	git commit -m 'Makefile: Updated scoped packages'
-	$(release-it) --increment=$(git describe)
+	$(release-it) $(git describe)
 
 screenshots:
 	make build
