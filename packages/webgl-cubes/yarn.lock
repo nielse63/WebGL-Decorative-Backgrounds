@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@nielse63/noise@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@nielse63/noise/-/noise-1.0.4.tgz#7660529bd32ca35ac8707cc98f404b42c22a8250"
+"@nielse63/noise@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@nielse63/noise/-/noise-1.0.5.tgz#3896c88c7f3a289eeca5c1c24417189d6195567f"
 
-"@nielse63/webgl-utils@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.4.tgz#f000245d16d265c4ce84620cb3ecac1011f5d960"
+"@nielse63/webgl-utils@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.5.tgz#48835c8529239939fd5fe68442b20cb7d6a4b90a"
 
 three@^0.93.0:
   version "0.93.0"

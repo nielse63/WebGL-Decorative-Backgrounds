@@ -26,6 +26,8 @@ clean-deps:
 
 publish:
 	make build
+	git add .
+	git commit
 	$(lerna) publish --force-publish=* --exact --skip-temp-tag --always
 	yarn upgrade --scope @nielse63 --latest
 	node scripts/get-outdated.js

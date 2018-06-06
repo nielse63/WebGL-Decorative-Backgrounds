@@ -16,11 +16,11 @@
     "unserve": "pm2 kill"
   },
   "dependencies": {
-    "@nielse63/webgl-brain": "^1.0.4",
-    "@nielse63/webgl-cubes": "^1.0.4",
-    "@nielse63/webgl-network": "^1.0.4",
-    "@nielse63/webgl-sphere": "^1.0.4",
-    "@nielse63/webgl-waves": "^1.0.4"
+    "@nielse63/webgl-brain": "^1.0.5",
+    "@nielse63/webgl-cubes": "^1.0.5",
+    "@nielse63/webgl-network": "^1.0.5",
+    "@nielse63/webgl-sphere": "^1.0.5",
+    "@nielse63/webgl-waves": "^1.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.0",
