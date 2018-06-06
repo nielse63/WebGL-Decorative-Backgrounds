@@ -26,9 +26,10 @@ clean-deps:
 
 publish:
 	make build
-	$(lerna) publish --force-publish=* --exact --skip-temp-tag
+	$(lerna) publish --force-publish=* --exact --skip-temp-tag --always
 	yarn upgrade --scope @nielse63 --latest
-	git add package.json yarn.lock
+	node scripts/get-outdated.js
+	git add .
 	git commit -m 'Makefile: Updated scoped packages'
 	$(release-it) --increment=$(git describe)
 
