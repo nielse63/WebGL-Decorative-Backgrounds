@@ -1,6 +1,6 @@
 {
   "name": "@nielse63/webgl-cubes",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "author": "Erik Nielsen <erik@312development.com> (https://312development.com)",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@nielse63/noise": "1.0.4",
-    "@nielse63/webgl-utils": "1.0.4",
+    "@nielse63/noise": "1.0.5",
+    "@nielse63/webgl-utils": "1.0.5",
     "three": "^0.93.0"
   }
 }
