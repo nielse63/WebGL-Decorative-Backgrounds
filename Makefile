@@ -30,7 +30,7 @@ publish:
 	yarn upgrade --scope @nielse63 --latest
 	git add package.json yarn.lock
 	git commit -m 'Makefile: Updated scoped packages'
-	$(release-it)
+	$(release-it) --increment=$(git describe)
 
 screenshots:
 	make build

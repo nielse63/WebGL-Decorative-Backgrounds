@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@nielse63/webgl-utils@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nielse63/webgl-utils/-/webgl-utils-1.0.4.tgz#f000245d16d265c4ce84620cb3ecac1011f5d960"
+
 three@^0.93.0:
   version "0.93.0"
   resolved "https://registry.yarnpkg.com/three/-/three-0.93.0.tgz#3fd6c367ef4554abbb6e16ad69936283e895c123"

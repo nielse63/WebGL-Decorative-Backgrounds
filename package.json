@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "lint": "eslint src/ packages/ *.js --fix --cache",
-    "lint:internal": "eslint *.js .eslintrc.js --ignore-pattern='!.eslintrc.js' --fix --cache",
+    "lint:internal": "yarn run lint scripts/ .eslintrc.js --ignore-pattern='!.eslintrc.js'",
     "watch": "NODE_ENV=development webpack --watch",
     "build": "make build",
     "test": "echo 'no tests created yet!'",
@@ -42,13 +42,14 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
-    "sass-loader": "^7.0.2",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "webpack": "^4.10.2",
+    "webpack": "^4.11.0",
     "webpack-command": "^0.2.0",
     "yorkie": "^1.0.3"
   },
   "optionalDependencies": {
+    "chalk": "^2.4.1",
     "imagemin-cli": "^3.0.0",
     "pm2": "^2.10.4",
     "puppeteer": "^1.4.0",
