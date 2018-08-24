@@ -6,7 +6,7 @@
 [![npm](https://img.shields.io/npm/v/webgl-decorative-backgrounds.svg)](https://www.npmjs.com/package/webgl-decorative-backgrounds)
 ![node](https://img.shields.io/node/v/webgl-decorative-backgrounds.svg)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/22cea98ae5b00bbccf64/maintainability)](https://codeclimate.com/github/nielse63/WebGL-Decorative-Backgrounds/maintainability) [![Greenkeeper badge](https://badges.greenkeeper.io/nielse63/WebGL-Decorative-Backgrounds.svg)](https://greenkeeper.io/)
 ![David](https://img.shields.io/david/nielse63/webgl-decorative-backgrounds.svg)
 ![David](https://img.shields.io/david/dev/nielse63/webgl-decorative-backgrounds.svg)
 

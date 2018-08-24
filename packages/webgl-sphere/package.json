@@ -10,6 +10,6 @@
   "dependencies": {
     "@nielse63/noise": "1.0.5",
     "@nielse63/webgl-utils": "1.0.5",
-    "three": "^0.93.0"
+    "three": "^0.95.0"
   }
 }
