@@ -1,0 +1,16 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/noise/package.json",
+        "packages/webgl-brain/package.json",
+        "packages/webgl-cubes/package.json",
+        "packages/webgl-network/package.json",
+        "packages/webgl-sphere/package.json",
+        "packages/webgl-utils/package.json",
+        "packages/webgl-waves/package.json"
+      ]
+    }
+  }
+}
